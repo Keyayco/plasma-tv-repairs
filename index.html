@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Plasma TV Repairs — fast, reliable TV repair specialists. Plasma, LED, LCD, OLED, and Smart TV repairs with honest pricing." />
+    <title>Plasma TV Repairs — Trusted TV Repair Specialists</title>
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <header class="nav" id="nav">
+      <a href="#top" class="nav__brand" data-scroll>
+        <img src="images/logo.png" alt="Plasma TV Repairs" class="nav__logo" />
+        <span class="nav__brand-text">Plasma <em>TV Repairs</em></span>
+      </a>
+      <nav class="nav__links">
+        <a href="#services" data-scroll>Services</a>
+        <a href="#process" data-scroll>Process</a>
+        <a href="#work" data-scroll>Workshop</a>
+        <a href="#faq" data-scroll>FAQ</a>
+        <a href="#contact" data-scroll class="nav__cta">Get a quote</a>
+      </nav>
+      <button class="nav__burger" aria-label="Open menu" id="navBurger">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow reveal" data-reveal>Trusted TV repair specialists</span>
+          <h1 class="hero__title">
+            <span class="reveal-line"><span data-reveal-stagger>Bringing</span></span>
+            <span class="reveal-line"><span data-reveal-stagger>your screen</span></span>
+            <span class="reveal-line">
+              <span data-reveal-stagger class="hero__title-accent">back to life.</span>
+            </span>
+          </h1>
+          <p class="hero__lede reveal" data-reveal>
+            Plasma. LED. LCD. OLED. Smart TVs. We diagnose honestly,
+            repair carefully, and stand behind every fix with a
+            no-nonsense warranty.
+          </p>
+
+          <div class="hero__ctas reveal" data-reveal>
+            <a href="#contact" class="btn btn--primary" data-scroll>
+              Book a repair
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#services" class="btn btn--ghost" data-scroll>See what we fix</a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="stat reveal" data-reveal>
+              <div class="stat__num" data-count="12">0</div>
+              <div class="stat__label">Years on the bench</div>
+            </div>
+            <div class="stat reveal" data-reveal>
+              <div class="stat__num" data-count="4200">0</div>
+              <div class="stat__label">TVs revived</div>
+            </div>
+            <div class="stat reveal" data-reveal>
+              <div class="stat__num" data-count="98">0</div>
+              <div class="stat__label">% Success rate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal-rise" data-reveal>
+          <div class="hero__logo-card">
+            <img src="images/logo.png" alt="Plasma TV Repairs logo" />
+          </div>
+          <div class="hero__pill hero__pill--1">No fix, no fee</div>
+          <div class="hero__pill hero__pill--2">90-day warranty</div>
+          <div class="hero__pill hero__pill--3">Same-day diagnosis</div>
+        </div>
+      </div>
+
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span></span> Scroll
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Samsung</span><span>•</span>
+        <span>LG</span><span>•</span>
+        <span>Sony</span><span>•</span>
+        <span>Panasonic</span><span>•</span>
+        <span>Hisense</span><span>•</span>
+        <span>TCL</span><span>•</span>
+        <span>Philips</span><span>•</span>
+        <span>Toshiba</span><span>•</span>
+        <span>Sharp</span><span>•</span>
+        <span>Skyworth</span><span>•</span>
+        <span>Samsung</span><span>•</span>
+        <span>LG</span><span>•</span>
+        <span>Sony</span><span>•</span>
+        <span>Panasonic</span><span>•</span>
+        <span>Hisense</span><span>•</span>
+        <span>TCL</span><span>•</span>
+        <span>Philips</span><span>•</span>
+        <span>Toshiba</span><span>•</span>
+        <span>Sharp</span><span>•</span>
+        <span>Skyworth</span><span>•</span>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="services">
+      <div class="section__head">
+        <span class="eyebrow reveal" data-reveal>What we fix</span>
+        <h2 class="section__title reveal" data-reveal>
+          Every common — and uncommon — TV failure.
+        </h2>
+        <p class="section__lede reveal" data-reveal>
+          From dead power boards to ghostly lines on the panel, we have
+          the tools, the parts, and the patience to get it right.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal" data-reveal>
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
+          <h3>Power & Standby Faults</h3>
+          <p>Dead TV, blinking standby light, won't turn on? Power board
+            and capacitor repairs done in-house.</p>
+        </article>
+
+        <article class="card reveal" data-reveal>
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>No Picture / Black Screen</h3>
+          <p>Backlight rebuilds, T-CON board swaps, and panel diagnostics
+            for the dreaded "sound but no picture" issue.</p>
+        </article>
+
+        <article class="card reveal" data-reveal>
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+          </div>
+          <h3>Lines, Flicker & Ghosting</h3>
+          <p>Vertical or horizontal lines, dim halves, flickering
+            backlights — we trace it to the source.</p>
+        </article>
+
+        <article class="card reveal" data-reveal>
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5l-7 7 7 7M20 5l-7 7 7 7"/></svg>
+          </div>
+          <h3>HDMI & Input Boards</h3>
+          <p>Burnt HDMI ports, dead inputs, no signal errors. Mainboard
+            repair or replacement when needed.</p>
+        </article>
+
+        <article class="card reveal" data-reveal>
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </div>
+          <h3>Smart TV Software</h3>
+          <p>Boot loops, frozen logos, broken WebOS/Tizen/Android TV
+            firmware — flashed and restored.</p>
+        </article>
+
+        <article class="card reveal" data-reveal>
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <h3>Free Diagnostics</h3>
+          <p>Bring it in — we'll tell you what's wrong, what it'll cost,
+            and whether it's worth saving. No surprises.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process" id="process">
+      <div class="section__head">
+        <span class="eyebrow reveal" data-reveal>How it works</span>
+        <h2 class="section__title reveal" data-reveal>Four steps. Zero guesswork.</h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal" data-reveal>
+          <div class="step__num">01</div>
+          <h3>Drop off or call</h3>
+          <p>Bring your TV to the workshop or send a quick message with
+            the model and the symptoms.</p>
+        </li>
+        <li class="step reveal" data-reveal>
+          <div class="step__num">02</div>
+          <h3>Honest diagnosis</h3>
+          <p>We open it up, test the boards, and explain exactly what's
+            failing — usually within 24 hours.</p>
+        </li>
+        <li class="step reveal" data-reveal>
+          <div class="step__num">03</div>
+          <h3>You approve the quote</h3>
+          <p>No work happens until you say yes. If it's not worth
+            repairing, we'll tell you straight.</p>
+        </li>
+        <li class="step reveal" data-reveal>
+          <div class="step__num">04</div>
+          <h3>Repair & warranty</h3>
+          <p>We fix it, soak-test it for hours, and send it home with
+            a 90-day warranty on the work done.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- WORKSHOP / IMAGE -->
+    <section class="section work" id="work">
+      <div class="work__grid">
+        <div class="work__image reveal-rise" data-reveal>
+          <img src="images/repair-work.jpg" alt="A TV opened up on the workbench showing the panel and boards" />
+          <div class="work__badge">In the workshop</div>
+        </div>
+        <div class="work__copy">
+          <span class="eyebrow reveal" data-reveal>Real work, real tools</span>
+          <h2 class="section__title reveal" data-reveal>
+            We don't swap parts. We <em>repair</em> them.
+          </h2>
+          <p class="reveal" data-reveal>
+²            Every TV on our bench gets the same treatment: full visual
+            inspection, board-level testing, and component-level repair
+            wherever possible. That's how we keep prices down and keep
+            perfectly good electronics out of landfill.
+          </p>
+          <ul class="check-list">
+            <li class="reveal" data-reveal>Component-level board repair</li>
+            <li class="reveal" data-reveal>Genuine and quality-matched parts</li>
+            <li class="reveal" data-reveal>Long-form soak testing before pickup</li>
+            <li class="reveal" data-reveal>Transparent, itemised invoices</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="section quote">
+      <figure class="quote__inner reveal" data-reveal>
+        <svg class="quote__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M9 8C5 8 2 11 2 15v9h10V14H7c0-3 2-5 5-5V8H9zm15 0c-4 0-7 3-7 7v9h10V14h-5c0-3 2-5 5-5V8h-3z"/>
+        </svg>
+        <blockquote>
+          They quoted me a fraction of what the manufacturer wanted, picked
+          up the same week, and the TV's been running flawlessly ever since.
+          Genuinely the most honest repair shop I've dealt with.
+        </blockquote>
+        <figcaption>— Thandi M., happy customer</figcaption>
+      </figure>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="section__head">
+        <span class="eyebrow reveal" data-reveal>FAQ</span>
+        <h2 class="section__title reveal" data-reveal>The questions we hear every day.</h2>
+      </div>
+
+      <div class="faq__list">
+        <details class="faq__item reveal" data-reveal>
+          <summary>How much does a TV repair cost?</summary>
+          <p>Most repairs land between a small service fee and roughly
+            half the price of a new TV. We give a firm quote after
+            diagnosis — and you decide.</p>
+        </details>
+        <details class="faq__item reveal" data-reveal>
+          <summary>How long does it take?</summary>
+          <p>Diagnosis is usually within 24 hours. Most repairs are
+            finished in 2–5 working days, depending on parts.</p>
+        </details>
+        <details class="faq__item reveal" data-reveal>
+          <summary>Do you repair plasma TVs?</summary>
+          <p>Yes — it's literally in our name. Plasma, LED, LCD, OLED,
+            and Smart TVs from any major brand.</p>
+        </details>
+        <details class="faq__item reveal" data-reveal>
+          <summary>What if my TV can't be fixed?</summary>
+          <p>Then you pay nothing for the diagnosis. We'll tell you
+            honestly when a repair isn't economical.</p>
+        </details>
+        <details class="faq__item reveal" data-reveal>
+          <summary>Do you offer a warranty?</summary>
+          <p>Every repair comes with a 90-day warranty on the work and
+            replacement parts.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="contact__inner">
+        <div class="contact__copy">
+          <span class="eyebrow reveal" data-reveal>Get in touch</span>
+          <h2 class="section__title reveal" data-reveal>
+            Tell us what's wrong with your TV.
+          </h2>
+          <p class="reveal" data-reveal>
+            Drop a message with the brand, model, and what it's doing
+            (or not doing). We'll come back with next steps within a
+            few hours.
+          </p>
+
+          <ul class="contact__details">
+            <li class="reveal" data-reveal>
+              <strong>Workshop</strong>
+              Open Mon–Sat, 8:00 – 17:00
+            </li>
+            <li class="reveal" data-reveal>
+              <strong>Phone / WhatsApp</strong>
+              +00 000 000 0000
+            </li>
+            <li class="reveal" data-reveal>
+              <strong>Email</strong>
+              hello@plasmatvrepairs.com
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact__form reveal-rise" data-reveal id="contactForm" novalidate>
+          <label>
+            <span>Your name</span>
+            <input type="text" name="name" required placeholder="Jane Doe" />
+          </label>
+          <label>
+            <span>Phone or email</span>
+            <input type="text" name="contact" required placeholder="So we can reach you" />
+          </label>
+          <label>
+            <span>TV brand & model</span>
+            <input type="text" name="model" placeholder="e.g. Samsung UA55…" />
+          </label>
+          <label>
+            <span>What's it doing?</span>
+            <textarea name="message" rows="4" required placeholder="Powers on but no picture, sound is fine…"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary btn--block">
+            Send message
+          </button>
+          <p class="contact__note" id="formNote" hidden>
+            Thanks — your message has been queued. We'll be in touch shortly.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="" />
+          <div>
+            <strong>Plasma TV Repairs</strong>
+            <span>Trusted TV repair specialists.</span>
+          </div>
+        </div>
+        <nav class="footer__links">
+          <a href="#services" data-scroll>Services</a>
+          <a href="#process" data-scroll>Process</a>
+          <a href="#faq" data-scroll>FAQ</a>
+          <a href="#contact" data-scroll>Contact</a>
+        </nav>
+        <div class="footer__small">
+          © <span id="year"></span> Plasma TV Repairs. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
