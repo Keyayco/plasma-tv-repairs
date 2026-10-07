@@ -106,6 +106,146 @@
     if (!ticking) { requestAnimationFrame(parallax); ticking = true; }
   }, { passive: true });
 
+  /* --- Workshop photo carousel --- */
+  var carousel = document.getElementById('repairCarousel');
+  if (carousel) {
+    var slides = [
+      {
+        src: 'images/repair-gallery-01.jpg',
+        alt: 'Several televisions displaying a picture while Sam tests and repairs a TV on the workbench.'
+      },
+      {
+        src: 'images/repair-gallery-02.jpg',
+        alt: 'Sam working on the inside of a flat-screen TV on a red mat outside a home.'
+      },
+      {
+        src: 'images/repair-gallery-03.jpg',
+        alt: 'Sam replacing television backlight LED strips on a large TV panel.'
+      },
+      {
+        src: 'images/repair-gallery-04.jpg',
+        alt: 'Sam testing a TV circuit board with a multimeter.'
+      },
+      {
+        src: 'images/repair-gallery-05.jpg',
+        alt: 'An open television showing its circuit boards and components during repair.'
+      }
+    ];
+    var carouselImage = document.getElementById('repairCarouselImage');
+    var carouselDots = document.querySelectorAll('#repairCarouselDots .work__carousel-dot');
+    var carouselCount = document.getElementById('repairCarouselCount');
+    var carouselToggle = document.getElementById('repairCarouselToggle');
+    var currentSlide = 0;
+    var autoplayTimer = null;
+    var transitionTimer = null;
+    var pausedByUser = false;
+    var pointerInside = false;
+    var focusInside = false;
+    var reducedMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      carouselImage.classList.add('is-changing');
+      window.clearTimeout(transitionTimer);
+      transitionTimer = window.setTimeout(function () {
+        carouselImage.src = slides[currentSlide].src;
+        carouselImage.alt = slides[currentSlide].alt;
+        carouselImage.setAttribute('aria-label', 'Photo ' + (currentSlide + 1) + ' of ' + slides.length);
+        carouselImage.classList.remove('is-changing');
+      }, 150);
+
+      carouselDots.forEach(function (dot, dotIndex) {
+        if (dotIndex === currentSlide) {
+          dot.classList.add('is-active');
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.classList.remove('is-active');
+          dot.removeAttribute('aria-current');
+        }
+      });
+      if (carouselCount) carouselCount.textContent = (currentSlide + 1) + ' / ' + slides.length;
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer !== null) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function syncAutoplay() {
+      if (pausedByUser || pointerInside || focusInside || document.hidden || reducedMotion) {
+        stopAutoplay();
+        return;
+      }
+      if (autoplayTimer === null) {
+        autoplayTimer = window.setInterval(function () {
+          showSlide(currentSlide + 1);
+        }, 6000);
+      }
+    }
+
+    var previousButton = carousel.querySelector('.work__carousel-arrow--prev');
+    var nextButton = carousel.querySelector('.work__carousel-arrow--next');
+    if (previousButton) {
+      previousButton.addEventListener('click', function () {
+        showSlide(currentSlide - 1);
+        syncAutoplay();
+      });
+    }
+    if (nextButton) {
+      nextButton.addEventListener('click', function () {
+        showSlide(currentSlide + 1);
+        syncAutoplay();
+      });
+    }
+    carouselDots.forEach(function (dot, index) {
+      dot.addEventListener('click', function () {
+        showSlide(index);
+        syncAutoplay();
+      });
+    });
+    carousel.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showSlide(currentSlide - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showSlide(currentSlide + 1);
+      }
+    });
+    carousel.addEventListener('mouseenter', function () {
+      pointerInside = true;
+      syncAutoplay();
+    });
+    carousel.addEventListener('mouseleave', function () {
+      pointerInside = false;
+      syncAutoplay();
+    });
+    carousel.addEventListener('focusin', function () {
+      focusInside = true;
+      syncAutoplay();
+    });
+    carousel.addEventListener('focusout', function (e) {
+      if (!carousel.contains(e.relatedTarget)) {
+        focusInside = false;
+        syncAutoplay();
+      }
+    });
+    if (carouselToggle) {
+      carouselToggle.addEventListener('click', function () {
+        pausedByUser = !pausedByUser;
+        carouselToggle.textContent = pausedByUser ? 'Play' : 'Pause';
+        carouselToggle.setAttribute('aria-label', pausedByUser ? 'Play photo slideshow' : 'Pause photo slideshow');
+        carouselToggle.setAttribute('aria-pressed', pausedByUser ? 'true' : 'false');
+        syncAutoplay();
+      });
+    }
+    document.addEventListener('visibilitychange', syncAutoplay);
+    syncAutoplay();
+  }
+
   /* --- Contact form: simple client-side success state --- */
   var form = document.getElementById('contactForm');
   var note = document.getElementById('formNote');

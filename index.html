@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Plasma TV Repairs — fast, reliable TV repair specialists. Plasma, LED, LCD, OLED, and Smart TV repairs with honest pricing." />
-    <title>Plasma TV Repairs — Trusted TV Repair Specialists</title>
+    <meta name="description" content="Plama TV Repairs — fast, reliable TV repair specialists. Plasma, LED, LCD, OLED, and Smart TV repairs with honest pricing." />
+    <title>Plama TV Repairs — Trusted TV Repair Specialists</title>
     <link rel="icon" type="image/png" href="images/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,13 +15,14 @@
     <!-- NAV -->
     <header class="nav" id="nav">
       <a href="#top" class="nav__brand" data-scroll>
-        <img src="images/logo.png" alt="Plasma TV Repairs" class="nav__logo" />
-        <span class="nav__brand-text">Plasma <em>TV Repairs</em></span>
+        <img src="images/logo.png" alt="Plama TV Repairs" class="nav__logo" />
+        <span class="nav__brand-text">Plama <em>TV Repairs</em></span>
       </a>
       <nav class="nav__links">
         <a href="#services" data-scroll>Services</a>
         <a href="#process" data-scroll>Process</a>
         <a href="#work" data-scroll>Workshop</a>
+        <a href="#reviews" data-scroll>Reviews</a>
         <a href="#faq" data-scroll>FAQ</a>
         <a href="#contact" data-scroll class="nav__cta">Get a quote</a>
       </nav>
@@ -82,7 +83,7 @@
 
         <div class="hero__visual reveal-rise" data-reveal>
           <div class="hero__logo-card">
-            <img src="images/logo.png" alt="Plasma TV Repairs logo" />
+            <img src="images/logo.png" alt="Plama TV Repairs logo" />
           </div>
           <div class="hero__pill hero__pill--1">No fix, no fee</div>
           <div class="hero__pill hero__pill--2">90-day warranty</div>
@@ -229,9 +230,36 @@
     <!-- WORKSHOP / IMAGE -->
     <section class="section work" id="work">
       <div class="work__grid">
-        <div class="work__image reveal-rise" data-reveal>
-          <img src="images/repair-work.jpg" alt="A TV opened up on the workbench showing the panel and boards" />
+        <div class="work__image work__carousel reveal-rise" id="repairCarousel" data-reveal
+          role="region" aria-roledescription="carousel" aria-label="TV repair photo gallery" tabindex="0">
+          <img
+            class="work__carousel-image"
+            id="repairCarouselImage"
+            src="images/repair-gallery-01.jpg"
+            alt="Several televisions displaying a picture while Sam tests and repairs a TV on the workbench."
+            aria-label="Photo 1 of 5"
+          />
           <div class="work__badge">In the workshop</div>
+          <button class="work__carousel-arrow work__carousel-arrow--prev" type="button"
+            aria-label="Previous repair photo" aria-controls="repairCarouselImage">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button class="work__carousel-arrow work__carousel-arrow--next" type="button"
+            aria-label="Next repair photo" aria-controls="repairCarouselImage">
+            <span aria-hidden="true">›</span>
+          </button>
+          <div class="work__carousel-footer">
+            <div class="work__carousel-dots" id="repairCarouselDots" role="group" aria-label="Choose a repair photo">
+              <button class="work__carousel-dot is-active" type="button" aria-label="Show repair photo 1" aria-current="true"></button>
+              <button class="work__carousel-dot" type="button" aria-label="Show repair photo 2"></button>
+              <button class="work__carousel-dot" type="button" aria-label="Show repair photo 3"></button>
+              <button class="work__carousel-dot" type="button" aria-label="Show repair photo 4"></button>
+              <button class="work__carousel-dot" type="button" aria-label="Show repair photo 5"></button>
+            </div>
+            <span class="work__carousel-count" id="repairCarouselCount" aria-live="polite">1 / 5</span>
+            <button class="work__carousel-toggle" id="repairCarouselToggle" type="button"
+              aria-label="Pause photo slideshow" aria-pressed="false">Pause</button>
+          </div>
         </div>
         <div class="work__copy">
           <span class="eyebrow reveal" data-reveal>Real work, real tools</span>
@@ -239,7 +267,7 @@
             We don't swap parts. We <em>repair</em> them.
           </h2>
           <p class="reveal" data-reveal>
-²            Every TV on our bench gets the same treatment: full visual
+            Every TV on our bench gets the same treatment: full visual
             inspection, board-level testing, and component-level repair
             wherever possible. That's how we keep prices down and keep
             perfectly good electronics out of landfill.
@@ -254,19 +282,34 @@
       </div>
     </section>
 
-    <!-- TESTIMONIAL -->
-    <section class="section quote">
-      <figure class="quote__inner reveal" data-reveal>
-        <svg class="quote__mark" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M9 8C5 8 2 11 2 15v9h10V14H7c0-3 2-5 5-5V8H9zm15 0c-4 0-7 3-7 7v9h10V14h-5c0-3 2-5 5-5V8h-3z"/>
-        </svg>
-        <blockquote>
-          They quoted me a fraction of what the manufacturer wanted, picked
-          up the same week, and the TV's been running flawlessly ever since.
-          Genuinely the most honest repair shop I've dealt with.
-        </blockquote>
-        <figcaption>— Thandi M., happy customer</figcaption>
-      </figure>
+    <!-- CUSTOMER REVIEWS -->
+    <section class="section reviews" id="reviews">
+      <div class="section__head">
+        <span class="eyebrow reveal" data-reveal>Customer reviews</span>
+        <h2 class="section__title reveal" data-reveal>Good repairs, told by the people who trusted us.</h2>
+      </div>
+      <div class="reviews__grid">
+        <article class="review-card reveal" data-reveal>
+          <svg class="review-card__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9 8C5 8 2 11 2 15v9h10V14H7c0-3 2-5 5-5V8H9zm15 0c-4 0-7 3-7 7v9h10V14h-5c0-3 2-5 5-5V8h-3z"/>
+          </svg>
+          <blockquote>
+            <p>We recently used this gentleman to repair our TV, and we couldn’t be happier with the result. For years, the picture quality was dull, and we’d lost the enjoyment of watching it. I took a leap of faith and trusted him and I’m glad I did. He proved to be honest, professional, and reliable.</p>
+            <p>He couldn’t do a house call that Saturday, so we dropped the TV off at his home in the morning, and by the afternoon he had already contacted us to collect it. I was truly impressed by the quick turnaround.</p>
+            <p>Our TV has completely come back to life, and we’re enjoying it again. I only wish we had found him sooner. His pricing was also fair, and he was responsive and helpful on WhatsApp. I can’t thank him enough.</p>
+          </blockquote>
+          <p class="review-card__author">Gabi <span>Pretoria</span></p>
+        </article>
+        <article class="review-card reveal" data-reveal>
+          <svg class="review-card__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9 8C5 8 2 11 2 15v9h10V14H7c0-3 2-5 5-5V8H9zm15 0c-4 0-7 3-7 7v9h10V14h-5c0-3 2-5 5-5V8h-3z"/>
+          </svg>
+          <blockquote>
+            Found Sam on Google. Read the reviews and contacted him last Sunday(28 September) brought my 2017 55 inch JVC to him the following Monday for repairs thinking it was a only a backlight issue. Turns out the motherboard was also damaged and needed to be replaced. Thought I was gonna be charged extra for that also but Sam simply replaced it with a updated 2024 motherboard at no extra cost. All this took a few hours. Quick! Efficient! And most importantly Affordable! If ever someone mentions to me that they need their TV repaired, I'll simply say "Call Sam THE MAN"🙏🏾
+          </blockquote>
+          <p class="review-card__author">Leo Chokoe</p>
+        </article>
+      </div>
     </section>
 
     <!-- FAQ -->
@@ -331,7 +374,7 @@
             </li>
             <li class="reveal" data-reveal>
               <strong>Email</strong>
-              hello@plasmatvrepairs.com
+              hello@plamatvrepairs.com
             </li>
           </ul>
         </div>
@@ -369,7 +412,7 @@
         <div class="footer__brand">
           <img src="images/logo.png" alt="" />
           <div>
-            <strong>Plasma TV Repairs</strong>
+            <strong>Plama TV Repairs</strong>
             <span>Trusted TV repair specialists.</span>
           </div>
         </div>
@@ -380,7 +423,7 @@
           <a href="#contact" data-scroll>Contact</a>
         </nav>
         <div class="footer__small">
-          © <span id="year"></span> Plasma TV Repairs. All rights reserved.
+          © <span id="year"></span> Plama TV Repairs. All rights reserved.
         </div>
       </div>
     </footer>
