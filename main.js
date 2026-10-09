@@ -1,5 +1,5 @@
 /* =========================================================
-   plasma TV Repairs — vanilla JS
+   Plasma TV Repairs — vanilla JS
    Pure browser JS. No frameworks, no build-time imports.
    Drop this file next to index.html and styles.css and it
    will work on any static host.

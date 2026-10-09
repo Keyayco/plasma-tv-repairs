@@ -1,5 +1,5 @@
 /* =========================================================
-   plasma TV Repairs — vanilla CSS
+   Plasma TV Repairs — vanilla CSS
    Designed to be portable: no preprocessors, no frameworks.
    ========================================================= */
 
@@ -594,6 +594,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   display: grid; gap: 18px;
 }
 .contact__details li { display: grid; gap: 4px; font-size: 15px; color: var(--ink-2); }
+.contact__details a:hover { color: var(--orange); text-decoration: underline; }
 .contact__details strong {
   font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
   color: var(--orange);
