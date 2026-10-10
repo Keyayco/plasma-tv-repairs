@@ -129,6 +129,22 @@
       {
         src: 'images/repair-gallery-05.jpg',
         alt: 'An open television showing its circuit boards and components during repair.'
+      },
+      {
+        src: 'images/repair-gallery-06.jpg',
+        alt: 'Two technicians replacing the LED backlight strips inside a television at a customer’s home.'
+      },
+      {
+        src: 'images/repair-gallery-07.jpg',
+        alt: 'Technicians working together to open and repair a large flat-screen TV.'
+      },
+      {
+        src: 'images/repair-gallery-08.jpg',
+        alt: 'Technician repairing an open television beside several working screens.'
+      },
+      {
+        src: 'images/repair-gallery-09.jpg',
+        alt: 'Collage of technicians carrying out television repairs in customers’ homes.'
       }
     ];
     var carouselImage = document.getElementById('repairCarouselImage');
