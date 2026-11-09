@@ -1,7 +1,8 @@
 /* =========================================================
    Plasma TV Repairs — vanilla JS
    Pure browser JS. No frameworks, no build-time imports.
-   Drop this file next to index.html and styles.css.
+   Drop this file next to index.html and styles.css and it
+   will work on any static host.
    ========================================================= */
 
 (function () {
@@ -20,7 +21,6 @@
     if (window.scrollY > 16) nav.classList.add('is-scrolled');
     else nav.classList.remove('is-scrolled');
   }
-
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -30,28 +30,21 @@
     });
   }
 
-  /* --- Smooth scroll for in-page anchors --- */
+  /* --- Smooth scroll for in-page anchors (closes mobile menu) --- */
   document.querySelectorAll('a[data-scroll]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var href = link.getAttribute('href') || '';
       if (href.charAt(0) !== '#') return;
-
       var target = document.querySelector(href);
       if (!target) return;
-
       e.preventDefault();
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (nav) nav.classList.remove('is-open');
     });
   });
 
   /* --- Scroll reveal via IntersectionObserver --- */
   var revealEls = document.querySelectorAll('[data-reveal], .reveal-line');
-
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -60,58 +53,41 @@
           io.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -8% 0px'
-    });
-
-    revealEls.forEach(function (el) {
-      io.observe(el);
-    });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
   } else {
-    revealEls.forEach(function (el) {
-      el.classList.add('is-in');
-    });
+    // Fallback: just show everything
+    revealEls.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* --- Stagger reveal lines in hero title --- */
+  /* --- Stagger reveal lines in the hero title --- */
   var staggerEls = document.querySelectorAll('[data-reveal-stagger]');
-
   staggerEls.forEach(function (el, i) {
     el.style.transitionDelay = (i * 120) + 'ms';
   });
 
   /* --- Animated stats counter --- */
   var stats = document.querySelectorAll('[data-count]');
-
   if ('IntersectionObserver' in window && stats.length) {
     var sIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-
         var el = entry.target;
         var target = parseInt(el.getAttribute('data-count'), 10) || 0;
         var duration = 1600;
         var start = performance.now();
-
         function tick(now) {
           var p = Math.min(1, (now - start) / duration);
           var eased = 1 - Math.pow(1 - p, 3);
           var value = Math.round(target * eased);
-
           el.textContent = value.toLocaleString();
-
           if (p < 1) requestAnimationFrame(tick);
         }
-
         requestAnimationFrame(tick);
         sIo.unobserve(el);
       });
     }, { threshold: 0.5 });
-
-    stats.forEach(function (el) {
-      sIo.observe(el);
-    });
+    stats.forEach(function (el) { sIo.observe(el); });
   }
 
   /* --- Parallax for hero blobs --- */
@@ -119,35 +95,19 @@
   var blob2 = document.querySelector('.hero__blob--2');
   var heroVisual = document.querySelector('.hero__visual');
   var ticking = false;
-
   function parallax() {
     var y = window.scrollY;
-
-    if (blob1) {
-      blob1.style.transform = 'translate3d(0,' + (y * 0.15) + 'px,0)';
-    }
-
-    if (blob2) {
-      blob2.style.transform = 'translate3d(0,' + (y * -0.08) + 'px,0)';
-    }
-
-    if (heroVisual && y < 800) {
-      heroVisual.style.transform = 'translate3d(0,' + (y * -0.05) + 'px,0)';
-    }
-
+    if (blob1) blob1.style.transform = 'translate3d(0,' + (y * 0.15) + 'px,0)';
+    if (blob2) blob2.style.transform = 'translate3d(0,' + (y * -0.08) + 'px,0)';
+    if (heroVisual && y < 800) heroVisual.style.transform = 'translate3d(0,' + (y * -0.05) + 'px,0)';
     ticking = false;
   }
-
   window.addEventListener('scroll', function () {
-    if (!ticking) {
-      requestAnimationFrame(parallax);
-      ticking = true;
-    }
+    if (!ticking) { requestAnimationFrame(parallax); ticking = true; }
   }, { passive: true });
 
   /* --- Workshop photo carousel --- */
   var carousel = document.getElementById('repairCarousel');
-
   if (carousel) {
     var slides = [
       {
@@ -187,38 +147,27 @@
         alt: 'Collage of technicians carrying out television repairs in customers’ homes.'
       }
     ];
-
     var carouselImage = document.getElementById('repairCarouselImage');
     var carouselDots = document.querySelectorAll('#repairCarouselDots .work__carousel-dot');
     var carouselCount = document.getElementById('repairCarouselCount');
     var carouselToggle = document.getElementById('repairCarouselToggle');
-
     var currentSlide = 0;
     var autoplayTimer = null;
     var transitionTimer = null;
     var pausedByUser = false;
     var pointerInside = false;
     var focusInside = false;
-
     var reducedMotion = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function showSlide(index) {
       currentSlide = (index + slides.length) % slides.length;
-
       carouselImage.classList.add('is-changing');
-
       window.clearTimeout(transitionTimer);
-
       transitionTimer = window.setTimeout(function () {
         carouselImage.src = slides[currentSlide].src;
         carouselImage.alt = slides[currentSlide].alt;
-
-        carouselImage.setAttribute(
-          'aria-label',
-          'Photo ' + (currentSlide + 1) + ' of ' + slides.length
-        );
-
+        carouselImage.setAttribute('aria-label', 'Photo ' + (currentSlide + 1) + ' of ' + slides.length);
         carouselImage.classList.remove('is-changing');
       }, 150);
 
@@ -231,10 +180,7 @@
           dot.removeAttribute('aria-current');
         }
       });
-
-      if (carouselCount) {
-        carouselCount.textContent = (currentSlide + 1) + ' / ' + slides.length;
-      }
+      if (carouselCount) carouselCount.textContent = (currentSlide + 1) + ' / ' + slides.length;
     }
 
     function stopAutoplay() {
@@ -245,17 +191,10 @@
     }
 
     function syncAutoplay() {
-      if (
-        pausedByUser ||
-        pointerInside ||
-        focusInside ||
-        document.hidden ||
-        reducedMotion
-      ) {
+      if (pausedByUser || pointerInside || focusInside || document.hidden || reducedMotion) {
         stopAutoplay();
         return;
       }
-
       if (autoplayTimer === null) {
         autoplayTimer = window.setInterval(function () {
           showSlide(currentSlide + 1);
@@ -265,28 +204,24 @@
 
     var previousButton = carousel.querySelector('.work__carousel-arrow--prev');
     var nextButton = carousel.querySelector('.work__carousel-arrow--next');
-
     if (previousButton) {
       previousButton.addEventListener('click', function () {
         showSlide(currentSlide - 1);
         syncAutoplay();
       });
     }
-
     if (nextButton) {
       nextButton.addEventListener('click', function () {
         showSlide(currentSlide + 1);
         syncAutoplay();
       });
     }
-
     carouselDots.forEach(function (dot, index) {
       dot.addEventListener('click', function () {
         showSlide(index);
         syncAutoplay();
       });
     });
-
     carousel.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -296,114 +231,60 @@
         showSlide(currentSlide + 1);
       }
     });
-
     carousel.addEventListener('mouseenter', function () {
       pointerInside = true;
       syncAutoplay();
     });
-
     carousel.addEventListener('mouseleave', function () {
       pointerInside = false;
       syncAutoplay();
     });
-
     carousel.addEventListener('focusin', function () {
       focusInside = true;
       syncAutoplay();
     });
-
     carousel.addEventListener('focusout', function (e) {
       if (!carousel.contains(e.relatedTarget)) {
         focusInside = false;
         syncAutoplay();
       }
     });
-
     if (carouselToggle) {
       carouselToggle.addEventListener('click', function () {
         pausedByUser = !pausedByUser;
-
         carouselToggle.textContent = pausedByUser ? 'Play' : 'Pause';
-
-        carouselToggle.setAttribute(
-          'aria-label',
-          pausedByUser ? 'Play photo slideshow' : 'Pause photo slideshow'
-        );
-
-        carouselToggle.setAttribute(
-          'aria-pressed',
-          pausedByUser ? 'true' : 'false'
-        );
-
+        carouselToggle.setAttribute('aria-label', pausedByUser ? 'Play photo slideshow' : 'Pause photo slideshow');
+        carouselToggle.setAttribute('aria-pressed', pausedByUser ? 'true' : 'false');
         syncAutoplay();
       });
     }
-
     document.addEventListener('visibilitychange', syncAutoplay);
     syncAutoplay();
   }
 
-  /* --- Contact form: WhatsApp click-to-chat --- */
+  /* --- Contact form: simple client-side success state --- */
   var form = document.getElementById('contactForm');
   var note = document.getElementById('formNote');
-
   if (form) {
-    var submitButton = form.querySelector('button[type="submit"]');
-
-    if (submitButton) {
-      submitButton.textContent = 'Continue to WhatsApp';
-    }
-
-    if (note) {
-      note.textContent =
-        'WhatsApp will open with your message ready. Review it and tap Send to deliver your enquiry.';
-    }
-
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-
-      /* Validate required fields */
+      // Basic validation
       var required = form.querySelectorAll('[required]');
-      var valid = true;
-
+      var ok = true;
       required.forEach(function (input) {
         if (!input.value.trim()) {
           input.style.borderColor = '#e85a18';
-          valid = false;
+          ok = false;
         } else {
           input.style.borderColor = '';
         }
       });
-
-      if (!valid) return;
-
-      /* Collect customer details */
-      var name = form.elements.namedItem('name').value.trim();
-      var contact = form.elements.namedItem('contact').value.trim();
-      var model = form.elements.namedItem('model').value.trim();
-      var problem = form.elements.namedItem('message').value.trim();
-
-      /* Build the WhatsApp enquiry */
-      var message = [
-        'Hi Sam! I would like to enquire about a TV repair.',
-        '',
-        'Name: ' + name,
-        'Phone or email: ' + contact,
-        'TV brand and model: ' + (model || 'Not provided'),
-        'Problem: ' + problem,
-        '',
-        'Please let me know the next steps. Thank you.'
-      ].join('\n');
-
-      /* South African number in international format */
-      var whatsappUrl =
-        'https://wa.me/27681614819?text=' +
-        encodeURIComponent(message);
-
-      /* Open WhatsApp in the current tab */
-window.location.href = whatsappUrl;
+      if (!ok) return;
+      form.reset();
+      if (note) {
+        note.hidden = false;
+        setTimeout(function () { note.hidden = true; }, 6000);
       }
     });
   }
-
 })();
