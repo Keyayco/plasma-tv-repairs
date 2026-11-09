@@ -400,20 +400,8 @@
         'https://wa.me/27681614819?text=' +
         encodeURIComponent(message);
 
-      /* Open WhatsApp */
-      var whatsappTab = window.open(whatsappUrl, '_blank');
-
-      /* Fallback if the browser blocks the new tab */
-      if (!whatsappTab) {
-        window.location.href = whatsappUrl;
-        return;
-      }
-
-      whatsappTab.opener = null;
-
-      /* Explain that the customer must still press Send */
-      if (note) {
-        note.hidden = false;
+      /* Open WhatsApp in the current tab */
+window.location.href = whatsappUrl;
       }
     });
   }
